@@ -31,7 +31,7 @@ This script performs an unattended installation of Arch Linux using a predefined
 - UEFI-compatible system
 - An active internet connection
 - Arch Linux installation media (booted and running)
-- This script and a `.env` file placed in the same directory
+- A `.env` file containing your desired username, passwords, and hostname
 
 ---
 
@@ -88,7 +88,26 @@ If you're using Wi-Fi (e.g. on a laptop), connect to the internet before running
 
 ## ▶️ Usage
 
-### 📥 Transfer the script and `.env` file
+### 🔄 Clone the repository (recommended)
+
+After connecting to the internet:
+
+```bash
+pacman -Sy --noconfirm git
+git clone https://github.com/dadtronics/arch.git
+cd arch
+```
+
+Make sure your `.env` file is in the cloned directory, then run:
+
+```bash
+chmod +x arch-autoinstall.sh
+./arch-autoinstall.sh
+```
+
+---
+
+### 📥 Alternate: Transfer via `scp` (if not using Git)
 
 From another machine:
 
@@ -104,8 +123,6 @@ cd /root
 chmod +x arch-autoinstall.sh
 ./arch-autoinstall.sh
 ```
-
-Once complete, reboot the system and log in with the specified user credentials.
 
 ---
 

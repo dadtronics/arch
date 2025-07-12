@@ -65,7 +65,7 @@ HOSTS
 echo "root:$ROOTPASS" | chpasswd
 useradd -m -G wheel "$USERNAME"
 echo "$USERNAME:$USERPASS" | chpasswd
-echo '%wheel ALL=(ALL) ALL' | EDITOR=tee visudo
+echo '%wheel ALL=(ALL) NOPASSWD: ALL' | EDITOR=tee visudo
 
 systemctl enable NetworkManager
 
