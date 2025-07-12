@@ -1,2 +1,61 @@
-# arch
-arch scripts
+````markdown
+# Arch Linux Auto-Installer
+
+This script performs an unattended installation of Arch Linux using a predefined disk layout and configuration.
+
+## 🧾 What It Does
+
+- Automatically detects the main system disk
+- Wipes the disk and creates a GPT layout with:
+  - EFI System Partition (512MiB)
+  - Root partition (remaining space)
+- Formats partitions (`FAT32` for EFI, `ext4` for root)
+- Mounts partitions and installs base Arch packages
+- Installs essential tools (e.g. `vim`, `less`, `man`, `NetworkManager`)
+- Configures:
+  - Timezone
+  - Locale
+  - Hostname
+  - `/etc/hosts`
+  - `fstab`
+- Adds a swap file (2GB)
+- Creates a user and sets passwords (root + user)
+- Installs and registers a UEFI boot entry using EFI stub
+- Removes leftover USB boot entries from the system
+
+## 📁 Requirements
+
+- UEFI-compatible system
+- An active internet connection
+- Arch Linux installation media (booted and running)
+- This script and a `.env` file placed in the same directory
+
+## 🛠️ .env File
+
+Create a `.env` file with the following contents:
+
+```bash
+USERNAME=yourusername
+USERPASS=youruserpassword
+ROOTPASS=yourrootpassword
+HOSTNAME=yourhostname
+````
+
+> ⚠️ The script will fail if any of these variables are missing.
+
+## ▶️ Usage
+
+From within an Arch live environment:
+
+```bash
+chmod +x arch-autoinstall.sh
+./arch-autoinstall.sh
+```
+
+Once complete, reboot the system and log in with the specified user credentials.
+
+## ⚠️ Warning
+
+This script **will erase the primary system disk** without prompting. Use with caution.
+
+```
