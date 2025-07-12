@@ -100,8 +100,8 @@ HOSTNAME=yourhostname
 ### ▶️ Run the Installer
 
 ```bash
-chmod +x arch-autoinstall.sh
-./arch-autoinstall.sh
+chmod +x install.sh
+./install.sh
 ```
 
 ---
@@ -111,7 +111,7 @@ chmod +x arch-autoinstall.sh
 From another machine:
 
 ```bash
-scp user@your-host:/path/to/arch-autoinstall.sh /root/
+scp user@your-host:/path/to/install.sh /root/
 scp user@your-host:/path/to/.env /root/
 ```
 
@@ -119,8 +119,8 @@ Then on the live Arch system:
 
 ```bash
 cd /root
-chmod +x arch-autoinstall.sh
-./arch-autoinstall.sh
+chmod +x install.sh
+./install.sh
 ```
 
 ---
