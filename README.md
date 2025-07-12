@@ -21,6 +21,7 @@ This script performs an unattended installation of Arch Linux using a predefined
   - `fstab`
 - Adds a swap file (2GB)
 - Creates a user and sets passwords (root + user)
+- Grants the user passwordless sudo (`NOPASSWD`)
 - Installs and registers a UEFI boot entry using EFI stub
 - Removes leftover USB boot entries from the system
 
@@ -32,21 +33,6 @@ This script performs an unattended installation of Arch Linux using a predefined
 - An active internet connection
 - Arch Linux installation media (booted and running)
 - A `.env` file containing your desired username, passwords, and hostname
-
----
-
-## 🛠️ .env File
-
-Create a `.env` file with the following contents:
-
-```bash
-USERNAME=yourusername
-USERPASS=youruserpassword
-ROOTPASS=yourrootpassword
-HOSTNAME=yourhostname
-````
-
-> ⚠️ The script will fail if any of these variables are missing.
 
 ---
 
@@ -88,17 +74,30 @@ If you're using Wi-Fi (e.g. on a laptop), connect to the internet before running
 
 ## ▶️ Usage
 
-### 🔄 Clone the repository (recommended)
+### 🔄 Clone the Repository (Recommended)
 
 After connecting to the internet:
 
 ```bash
-pacman -Sy --noconfirm git
+pacman -Sy --noconfirm git vim
 git clone https://github.com/dadtronics/arch.git
 cd arch
 ```
 
-Make sure your `.env` file is in the cloned directory, then run:
+### 🛠️ Configure the `.env` File
+
+Edit the `.env` file with your user info:
+
+```bash
+USERNAME=yourusername
+USERPASS=youruserpassword
+ROOTPASS=yourrootpassword
+HOSTNAME=yourhostname
+```
+
+> ⚠️ The script will fail if any of these variables are missing.
+
+### ▶️ Run the Installer
 
 ```bash
 chmod +x arch-autoinstall.sh
