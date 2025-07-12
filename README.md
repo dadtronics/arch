@@ -58,4 +58,4 @@ Once complete, reboot the system and log in with the specified user credentials.
 
 This script **will erase the primary system disk** without prompting. Use with caution.
 
-```
+````
