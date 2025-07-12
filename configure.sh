@@ -1,19 +1,21 @@
 #!/bin/bash
 set -e
 
-echo "📡 Connecting to Wi-Fi..."
-nmcli device wifi connect "your-ssid" password "your-password"
-
 echo "💻 Installing minimal KDE Plasma desktop..."
+
 pacman -Sy --noconfirm \
   xorg-server xorg-apps xorg-xinit \
   plasma-meta kde-gtk-config sddm \
   dolphin konsole \
   pipewire pipewire-audio plasma-pa \
-  networkmanager
+  firefox networkmanager
 
 echo "⚙️ Enabling system services..."
 systemctl enable sddm
 systemctl enable NetworkManager
 
-echo "✅ KDE setup complete. Reboot to enter Plasma desktop."
+echo "📶 Setting up Wi-Fi profile for $WIFI_SSID..."
+nmcli device wifi connect "$WIFI_SSID" password "$WIFI_PASS" name "wifi-autoconnect"
+nmcli connection modify "wifi-autoconnect" connection.autoconnect yes
+
+echo "✅ KDE setup complete. Ready for reboot."
