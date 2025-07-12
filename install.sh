@@ -4,7 +4,9 @@ set -e
 source ./.env
 
 # Detect main disk
-DISK=$(lsblk -d -e 7,11 -n -o NAME,RO,TYPE | awk '$2 == 0 && $3 == "disk" { print "/dev/" $1; exit }')
+# Prompt for target disk
+lsblk -d -e 7,11 -o NAME,SIZE,MODEL
+read -rp "Enter the target disk (e.g., /dev/sda or /dev/nvme0n1): " DISK
 echo "🧠 Using disk: $DISK"
 
 # Handle p# vs # suffix
