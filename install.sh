@@ -101,10 +101,6 @@ efibootmgr -v | grep -i 'usb\\|bootx64.efi' | while read -r line; do
     efibootmgr --bootnum "\$BOOTNUM" --delete-bootnum
   fi
 done
-
-# Run post-install desktop configuration
-bash /root/configure.sh
-rm -f /root/configure.sh
 EOF
 
 echo "✅ Done! Reboot and log in as '$USERNAME'. Hostname is '$HOSTNAME'."
