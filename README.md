@@ -1,7 +1,8 @@
-````markdown
 # Arch Linux Auto-Installer
 
 This script performs an unattended installation of Arch Linux using a predefined disk layout and configuration.
+
+---
 
 ## 🧾 What It Does
 
@@ -23,12 +24,16 @@ This script performs an unattended installation of Arch Linux using a predefined
 - Installs and registers a UEFI boot entry using EFI stub
 - Removes leftover USB boot entries from the system
 
+---
+
 ## 📁 Requirements
 
 - UEFI-compatible system
 - An active internet connection
 - Arch Linux installation media (booted and running)
 - This script and a `.env` file placed in the same directory
+
+---
 
 ## 🛠️ .env File
 
@@ -43,6 +48,44 @@ HOSTNAME=yourhostname
 
 > ⚠️ The script will fail if any of these variables are missing.
 
+---
+
+## 📶 Connecting to Wi-Fi with `iwctl`
+
+If you're using Wi-Fi (e.g. on a laptop), connect to the internet before running the installer:
+
+1. Launch the interactive tool:
+
+   ```bash
+   iwctl
+   ```
+
+2. Inside the `iwctl` shell:
+
+   ```text
+   # List devices
+   device list
+
+   # Scan for networks (replace wlan0 with your device)
+   station wlan0 scan
+
+   # Show networks
+   station wlan0 get-networks
+
+   # Connect to your SSID (you'll be prompted for a password)
+   station wlan0 connect your-ssid
+   ```
+
+3. Verify connectivity:
+
+   ```bash
+   ping archlinux.org
+   ```
+
+> 💡 Use `exit` to leave the `iwctl` shell.
+
+---
+
 ## ▶️ Usage
 
 From within an Arch live environment:
@@ -54,8 +97,8 @@ chmod +x arch-autoinstall.sh
 
 Once complete, reboot the system and log in with the specified user credentials.
 
+---
+
 ## ⚠️ Warning
 
-This script **will erase the primary system disk** without prompting. Use with caution.
-
-````
+This script will **erase the primary system disk** without prompting. Use with caution.
