@@ -88,9 +88,19 @@ If you're using Wi-Fi (e.g. on a laptop), connect to the internet before running
 
 ## ▶️ Usage
 
-From within an Arch live environment:
+### 📥 Transfer the script and `.env` file
+
+From another machine:
 
 ```bash
+scp user@your-host:/path/to/arch-autoinstall.sh /root/
+scp user@your-host:/path/to/.env /root/
+```
+
+Then on the live Arch system:
+
+```bash
+cd /root
 chmod +x arch-autoinstall.sh
 ./arch-autoinstall.sh
 ```
